@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+    <debug />
+    <global-method-security pre-post-annotations="enabled" />
+    <http pattern="/static/**" security="none"/>
+    <http pattern="/login.jsp" security="none"/>
+    <http pattern="/register.jsp" security="none"/>
+    <http pattern="/loggedout.jsp" security="none"/>
+    <http pattern="*/index.*" security="none"/>
+    <http use-expressions="true">
+        <intercept-url pattern="/secure/extreme/**" access="hasRole('supervisor')"/>
+        <intercept-url pattern="/secure/**" access="isAuthenticated()" />
+        <!--
+             Allow all other requests. In a real application you should
+             adopt a whitelisting approach where access is not allowed by default
+          -->
+        <intercept-url pattern="/**" access="permitAll" />
+        <!-- login-page:默认指定的登录页面. authentication-failure-url:出错后跳转页面. default-target-url:成功登陆后跳转页面 -->  
+        <form-login login-page="/login.jsp"  
+            authentication-failure-url="/login.jsp?error=-1"  
+          	default-target-url="/index.jsp" />  
+        <logout logout-success-url="/loggedout.jsp" delete-cookies="JSESSIONID"/>
+        <remember-me />
+        
+		<!--
+		    Uncomment to enable X509 client authentication support
+		        <x509 />
+		-->
+        <!-- Uncomment to limit the number of sessions a user can have -->
+        <session-management invalid-session-url="/timeout.jsp">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </session-management>
+    </http>
+	
+	<!-- 采用md5的加密 -->
+    <beans:bean id="encoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="systemUserDetailService">
+			<password-encoder ref="encoder"/>
+		</authentication-provider>  
+	</authentication-manager>
+	<beans:bean id="systemUserDetailService" class="com.cgtest.user.authentication.SystemUserDetailService"></beans:bean> 
+	
+</beans:beans>
