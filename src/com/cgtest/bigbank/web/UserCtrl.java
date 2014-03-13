@@ -30,6 +30,7 @@ public class UserCtrl {
 		String password = request.getParameter("password");
 		User user=  new User();
 		user.setUsername(username);
+		//TODO:adding some salt can secure the password
 		Md5PasswordEncoder md5=new Md5PasswordEncoder();
 		String md5Password=md5.encodePassword(password,null);
 		user.setPassword(md5Password);
