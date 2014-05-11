@@ -1,0 +1,285 @@
+.acap .workspaceContainer{
+	height:100%;
+	width:100%;
+}
+
+.acap .workspaceTitleIconArea{
+	float:right;
+}
+
+.acap .workspaceTitlePathArea{
+}
+
+.acap .workspaceTitle{
+	padding:3px;
+	height:20px;
+	background: -moz-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background:-webkit-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background: -webkit-gradient(linear, left top, left bottom, from(#E9E9E9), to(#C4C4C4));
+	background-color: 	#C4C4C4;
+	Border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin-left:5px;
+	border:1px solid #D2D2D2 ; 
+}
+
+.acap .customerArea{
+	float:right;
+}
+
+.acap .workspaceIcon{
+	background-repeat: no-repeat;
+	cursor: pointer;
+	float:right;
+	height: 16px;
+	width: 16px;
+	background-position: center;
+	margin:2px 5px 2px 5px;
+}
+
+
+
+.acap .workspaceIconRefresh{
+	background-image: url("images/refresh.png")
+}
+
+
+.acap .workspaceIconSaveAs{
+	background-image: url("images/workspace_saveas.png")
+}
+
+.acap .workspaceIconAddWidget{
+	background-image: url("images/workspace_addWidget.png")
+}
+
+.acap .workspaceIconWidgetEdit{
+	background-image: url("images/workspace_widgetEdit.png")
+}
+
+.acap .workspaceIconLayout{
+	background-image: url("images/workspace_layout.png")
+}
+
+.acap .workspaceIconRecover{
+	background-image: url("images/workspace_undo.png")
+}
+
+.acap .workspaceContent{
+	clear:both;
+	overflow:auto;
+	height:100%;
+}
+
+.acap .workspaceLayout{
+	width:auto;
+	overflow : auto;
+	height:auto;
+}
+
+.acap .workspaceAddWidgetArea{
+	float:right;
+	display:none;
+	margin-top:5px;
+	margin-left:5px;
+	width:200px;
+	overflow:hidden;
+	Border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background: -moz-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background:-webkit-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background: -webkit-gradient(linear, left top, left bottom, from(#E9E9E9), to(#C4C4C4));
+	background-color: 	#C4C4C4;
+	border:1px solid #D2D2D2 ; 	
+}
+
+.acap .workspaceChooseLayoutArea{
+	width:70px;
+}
+
+.acap .chooseLayoutTable{
+	border:1px solid green;
+	height:24px;
+	width:24px;
+	float:left;
+	margin:3px;
+	table-layout:fixed;
+	border-collapse:collapse;
+}
+
+.acap .chooseLayoutTD{
+	border:1px solid green;
+	overflow:hidden;
+	font-size:1;
+}
+
+.acap .layoutElement{
+	height:24px;
+	width:24px;
+	float:left;
+	margin:3px;
+}
+
+
+.acap .popupcontainer{
+	position:absolute;
+	z-index:10001;
+	display:block;
+	outline:none;
+	text-decoration:none;
+	margin-top:10px;
+	Border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background: -moz-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background:-webkit-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background: -webkit-gradient(linear, left top, left bottom, from(#E9E9E9), to(#C4C4C4));
+	background-color: 	#C4C4C4;
+}
+
+.acap .backgroundIframe{
+	border:0px;
+	filter:Alpha(Opacity="0");
+	position:absolute;
+	z-index:10000;
+	width:0;
+	height:0;
+}
+
+.acap .categoryUL{
+	margin: 0;
+	padding: 5px;
+	color: #333;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif;
+}
+.acap .categoryLi{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 18px;
+	text-align: left;
+	white-space: nowrap;
+}
+.acap .widgetUL{
+	margin: 0;
+	padding: 0 0 0 18px;
+}
+.acap .widgetLi{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 18px;
+	text-align: left;
+	white-space: nowrap;
+}
+
+
+.acap .outlookStyle{
+	display:block;
+	height:300px;
+	width:100%;
+}
+
+.acap .u-ngt-tab{
+	table-layout:fixed;
+	width:100%;
+	height:100%;
+}
+
+
+.acap .u-ngt-up{
+	height:15px;
+	background: url(images/ct_bg.gif) repeat-x;
+	border-top:1px solid #abbad1;
+	cursor : pointer;
+	display : none;
+	overflow : hidden;
+	text-align : -moz-center !important;
+	text-align : center;
+}
+.acap .u-ngt-up .icon{
+	background: url(images/mini-top.gif) no-repeat;
+	width : 35px;
+	height : 5px;
+	overflow : hidden;
+	margin-top : 5px;
+}
+.acap .u-ngt-down{
+	height:15px;
+	background: url(images/ct_bg.gif) repeat-x;
+	border-top:1px solid #abbad1;
+	cursor : pointer;
+	display : none;
+	overflow : hidden;
+	text-align : -moz-center !important;
+	text-align : center ;
+}
+.acap .u-ngt-down .icon{
+	background: url(images/mini-bottom.gif) no-repeat;
+	width : 35px;
+	height : 5px;
+	overflow : hidden;
+	margin-top : 5px;
+}
+
+.acap .u-ngt-btm{
+	height:25px;
+	line-height:25px;
+	background: url(images/ct_bg.gif) repeat-x;
+	cursor:pointer;
+}
+
+.acap .u-ngt-close{
+	float:right;
+	width:16px;
+	height:16px;
+	margin:5px 2px 0px 2px;
+	overflow:hidden;
+	background: url(images/close.gif) no-repeat;
+}
+
+.acap .u-ngt-display{
+	float:right;
+	width:16px;
+	height:16px;
+	margin:5px 2px 0px 2px;
+	overflow:hidden;
+	background: url(images/display.gif) no-repeat;
+}
+
+/** 显示导航菜单区域 **/
+.acap .u-ngt-menu{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+/** 显示导航树区域 **/
+.acap .u-ngt-content{
+	width:100%;
+	height:100%;
+	overflow:auto;
+}
+/** 标题栏样式 **/
+.acap .u-ngt-title{
+	height:25px;
+	line-height: 25px;
+	background: url(images/ct_bg.gif) repeat-x;
+	border-bottom:1px solid #abbad1;	
+}
+/** 菜单图标 **/
+.acap .u-ngt-logo{
+	width:16px;
+	height:16px;
+	overflow:hidden;
+	float:left;
+	margin:5px 3px 0px 2px ;
+	background: url(images/demo.gif);
+}
+
+.acap .u-ngt-label{
+	height:16px;
+	font-size: 12px;	
+	float:left;
+}

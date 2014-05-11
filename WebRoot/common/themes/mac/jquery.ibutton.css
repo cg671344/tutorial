@@ -1,0 +1,147 @@
+.ibutton-container {
+    -moz-user-focus: ignore;
+    -moz-user-input: disabled;
+    -moz-user-select: none;
+    cursor: pointer;
+    height: 27px;
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+    width: 89px;
+}
+.ibutton-container input {
+    -moz-user-input: enabled !important;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+}
+.ibutton-handle {
+    background: url("../mac/images/ibutton-slider-default.png") no-repeat scroll 0 -54px transparent;
+    cursor: inherit;
+    display: block;
+    height: 27px;
+    left: 0;
+    padding-left: 3px;
+    position: absolute;
+    top: 0;
+    width: 33px;
+    z-index: 3;
+}
+.ibutton-handle-right {
+    background: url("../mac/images/ibutton-slider-default.png") no-repeat scroll 100% -54px transparent;
+    height: 100%;
+    padding-right: 3px;
+    width: 100%;
+    z-index: 3;
+}
+.ibutton-handle-middle {
+    background: url("../mac/images/ibutton-slider-default.png") no-repeat scroll 50% -54px transparent;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+}
+div.ibutton-label-on, div.ibutton-label-off {
+    background: url("../mac/images/ibutton-slider-default.png") no-repeat scroll 0 0 transparent;
+    cursor: inherit;
+    display: block;
+    font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    height: 22px;
+    line-height: 17px;
+    overflow: hidden;
+    padding-top: 5px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    white-space: nowrap;
+    width: auto;
+}
+div.ibutton-label-on {
+    color: #FFFFFF;
+    left: 0;
+    padding-top: 5px;
+    text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+div.ibutton-label-on span {
+    padding-left: 5px;
+}
+div.ibutton-label-off {
+    background-position: 100% 0;
+    color: #7C7C7C;
+    right: 0;
+    text-align: right;
+    text-shadow: 0 -1px 2px rgba(153, 153, 153, 0.4);
+    width: 95%;
+}
+div.ibutton-label-off span {
+    padding-right: 5px;
+}
+.ibutton-container label {
+    cursor: inherit;
+    font-size: 1em !important;
+    padding: 1px 3px;
+}
+.ibutton-focus label {
+    border: 1px dotted #666666 !important;
+    padding: 0 2px;
+}
+.ibutton-focus div.ibutton-label-on span label {
+    border-color: #FFFFFF !important;
+}
+.ibutton-padding-left, .ibutton-padding-right {
+    background: url("../mac/images/ibutton-slider-default.png") no-repeat scroll 0 -4px transparent;
+    height: 20px;
+    position: absolute;
+    top: 4px;
+    width: 3px;
+    z-index: 2;
+}
+.ibutton-padding-left {
+    left: 0;
+}
+.ibutton-padding-right {
+    background-position: 100% -4px;
+    right: 0;
+}
+.ibutton-active-handle .ibutton-handle {
+    background-position: 0 -108px;
+}
+.ibutton-active-handle .ibutton-handle-right {
+    background-position: 100% -108px;
+}
+.ibutton-active-handle .ibutton-handle-middle {
+    background-position: 50% -108px;
+}
+.ibutton-disabled {
+    cursor: not-allowed !important;
+}
+.ibutton-disabled .ibutton-handle {
+    background-position: 0 -81px;
+}
+.ibutton-disabled .ibutton-handle-right {
+    background-position: 100% -81px;
+}
+.ibutton-disabled .ibutton-handle-middle {
+    background-position: 50% -81px;
+}
+.ibutton-disabled div.ibutton-label-on {
+    background-position: 0 -27px;
+}
+.ibutton-disabled div.ibutton-label-off {
+    background-position: 100% -27px;
+}
+.ibutton-disabled .ibutton-padding-left {
+    background-position: 0 -27px;
+}
+.ibutton-disabled .ibutton-padding-right {
+    background-position: 100% -27px;
+}
+.ibutton-disabled div.ibutton-label-on {
+    color: #FFFFFF;
+}
+.ibutton-disabled div.ibutton-label-off {
+    color: #CBCBCB;
+}

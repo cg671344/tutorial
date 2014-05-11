@@ -26,8 +26,6 @@ public class SystemUserDetailService implements  org.springframework.security.co
 		try {
 			List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
 			grantedAuthorities.add(new SimpleGrantedAuthority("supervisor"));
-			grantedAuthorities.add(new SimpleGrantedAuthority("user"));
-			grantedAuthorities.add(new SimpleGrantedAuthority("teller"));
 			User user = userManager.getUserByUsername(username);
 			AccountDetails acount = new AccountDetails(username, user.getPassword(), true,
 					true, true, true, grantedAuthorities);

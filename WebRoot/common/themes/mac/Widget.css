@@ -1,0 +1,206 @@
+.acap .widgetPane  {
+	margin:5px;
+	outline:none;
+	position:relative;
+}
+
+.acap .layoutTable td .widgetPane.max{
+	margin:6px;
+	-webkit-box-shadow:0px 0px 5px #333333;
+	-moz-box-shadow:0px 0px 5px #333333;
+	box-shadow:0px 0px 5px #333333;
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+}
+
+.acap .widgetPaneTitle {
+	background-image:url("images/widget-title.png");
+	background-repeat: repeat-x;
+	border: 1px solid #b5bcc7;
+	padding: 0 12px 0px 12px;
+	line-height:18px;
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	height:21px;
+}
+
+/*没有标题栏*/
+.acap .widgetPaneTitle.noTitle{
+	height:0px;
+	border:0px;
+	border-top: 1px solid #b5bcc7;
+}
+
+
+/*标题栏隐藏*/
+.acap .widgetPaneTitleHidden.min .widgetPaneTitle{
+	visibility: inherit;
+	border: 1px solid #b5bcc7;
+	background-image:url("images/widget-title.png");
+	background-repeat: repeat-x;
+	height:auto;
+}
+.acap .widgetPaneTitleHidden.min{
+	height:21px;
+}
+
+.acap .widgetPaneTitleHidden.min .widgetPaneTitleFocus{
+	visibility: inherit;
+}
+.acap .widgetPaneTitleHidden .widgetPaneTitle{
+	background-image :none;
+	border-bottom: 0px;
+	position:absolute;
+	left:0px;
+	right:0px;
+	height:5px;
+}
+.acap .widgetPaneTitleHidden .widgetPaneTitle.widgetPaneTitleHover {
+	border: 1px solid #b5bcc7;
+	background-image:url("images/widget-title.png");
+	background-repeat: repeat-x;
+	height:auto;
+}
+
+
+.acap .widgetPaneTitleHidden .widgetPaneTitleFocus{
+	visibility: hidden;
+}
+.acap .widgetPaneTitleHidden .widgetPaneTitleHover .widgetPaneTitleFocus{
+	visibility: inherit;
+}
+
+
+
+.dj_ie6 .acap .widgetPaneTitle {
+	background-image: none;
+}
+
+
+.acap .widgetPaneTitleFocus {
+	margin-top: 2px;
+	padding-bottom: 1px;
+}
+
+
+.acap .widgetPaneContentOuter {
+	background: #ffffff;
+	border: 1px solid #b6bcc2;
+	border-top: none;
+	cursor:default;
+}
+
+.acap .widgetPaneTitleHidden .widgetPaneContentOuter{
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+}
+
+.acap .widgetPaneContentInner {
+	padding: 3px;
+	overflow: hidden;
+}
+
+.acap .max .widgetPaneContentInner{
+	overflow:auto;
+}
+
+.acap .widgetPaneTextNode {
+	margin-right: 4px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden; 
+}
+
+
+.acap .widgetIcon {
+	cursor: pointer;
+	float: right;
+	height: 16px;
+	width: 16px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	background-repeat: no-repeat;
+	background-image: url("images/worksapce_iocns.png");
+	margin-left:5px;
+}
+.acap .widgetIconclose {
+	background-position:-5px -122px;
+}
+.acap .widgetIconclose:hover {
+	background-position:-26px -122px;
+}
+.acap .widgetIconmax {
+	background-position:-5px -139px;
+}
+.acap .widgetIconmax:hover {
+	background-position:-26px -139px;
+}
+.acap .widgetIconmin.widgetIconrestore {
+	background-position:-5px -156px;
+}
+.acap .widgetIconmax.widgetIconrestore {
+	background-position:-5px -156px;
+}
+
+.acap .widgetIconmin.widgetIconrestore:hover {
+	background-position:-26px -156px;
+}
+.acap .widgetIconmax.widgetIconrestore:hover {
+	background-position:-26px -156px;
+}
+.acap	.widgetIconmin {
+	background-position:-5px -174px;
+}
+.acap	.widgetIconmin:hover {
+	background-position:-26px -174px;
+}
+.acap	.widgetIconsetting {
+	background-position:-5px -191px;
+}
+.acap	.widgetIconsetting:hover {
+	background-position:-26px -191px;
+}
+.acap	.widgetIconrefresh {
+	background-position:-5px -207px;
+}
+.acap	.widgetIconrefresh:hover {
+	background-position:-26px -207px;
+}
+
+
+.acap .widgetPaneMenuOuter{
+	position:relative;
+	width:1px;
+	display:none;
+}
+
+.acap .widgetPaneMenuInner{
+	background-color:#ededed;
+	position:absolute;
+	top:20px;
+	left:-16px;
+	width:70px;
+	border:1px solid #999999;
+	z-index: 10000;
+}
+
+
+.acap .widgetPaneMenuItem{
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    padding-left: 7px;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: left;
+}
+
+
+.acap a:hover.widgetPaneMenuItem{
+	background-color: #ECF4FD;
+}

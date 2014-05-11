@@ -1,0 +1,89 @@
+/**
+ * Layout布局类样式
+ */
+
+.acap .layoutContainer{
+	width:auto;
+}
+
+.acap .layoutContainerDiv{
+	width:auto;
+	overflow:hidden;
+	padding-top:2px;
+	padding-right:0px;
+}
+
+.acap .layoutTable{
+	width:100%;
+	table-layout:fixed;
+	empty-cells: show;
+}
+
+.acap .layoutTable td{
+	vertical-align:top;
+}
+
+
+.acap .layoutTable td.td-height{
+	height:50px;
+}
+
+/*表格中widget控件的下边距为5px */
+.acap .layoutTable td .widgetPane{
+	margin:0px 0px 1px 0px;
+}
+
+
+/**
+ * 拖拽样式
+ */
+
+.dragHandle{
+	cursor:move;
+}
+
+.dropIndicator{
+	position:relative;
+	height:50px;
+	border:2px dashed #BFBFBF;
+	margin-left:5px;
+	margin-bottom:5px;
+}
+.dropIndicator > div{
+	position:absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;	
+	background-color:#FFF;
+
+}
+.dj_ie6 .dropIndicator div{
+	position:relative;
+	height:100%;
+	background-color:#fff;
+}
+.dj_ie6 .dropIndicator{
+	_margin:10px;
+}
+
+.dndCover{
+	/*单像素填充*/
+	background-image:url(images/pixel.gif);
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:1000px;
+	z-index:9999;
+	cursor:move;
+	opacity:0.4; 
+	filter:alpha(opacity=40); 
+	-khtml-opacity:0.4; 
+	-moz-opacity:0.4;
+}
+
+.dndCover2{
+	z-index: 10001;
+}
+

@@ -1,0 +1,57 @@
+.loading{
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	z-Index:10001;		
+}
+.loading-alpha{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:lightgray;
+	filter: alpha(opacity=50);
+	opacity:.50;
+	overflow:hidden;
+}
+.loading-p{
+	position:absolute;
+	width:241px;
+	height:100px;
+	display:block;
+	left:50%;
+	top:50%;
+}
+.loading-content{
+	position:relative;	
+	top:-50%;
+	left:-50%;
+	width:218px;
+	height:100px;
+
+}
+.loading-text{
+	text-align:center;
+	padding:10px 0px 10px 15px;
+	font-size:12px;
+	font-family : tahoma, arial, helvetica, sans-serif;
+	color : #333;
+}
+.loading-img{
+	cursor:wait;
+	width: 218px;
+	height:64px;	
+	
+	background:  url(../images/loading/loading4.gif) no-repeat center center;
+}
+.loading-cancel{
+	position:absolute;
+	top:4px;
+	right:4px;
+	width:14px;
+	height:14px;
+	cursor:pointer;
+}

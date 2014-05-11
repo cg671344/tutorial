@@ -1,0 +1,45 @@
+* { margin:0; padding:0; outline:0; vertical-align:baseline;}
+body {
+	font-size:62.5%;
+	background:#fff;
+	font-family: Arial, "宋体";
+}
+h3 {
+font-size:14px;
+}
+.MIB_line_l {
+color:#D6D6D6;
+padding:0 9px 0 8px;
+}
+ul,ol {list-style:none;}
+
+em {font-style:normal; line-height:21px;  }
+img{ border:0;}
+
+a:visited{color:#282828; text-decoration:none; }
+a:link{color:#282828; text-decoration:none; }
+a:hover {color:#990000; text-decoration:none; }
+
+figure{ 
+display:block;
+float:left;}
+sup{ margin-right:3px}
+
+/* css lib */
+.b{font-weight:bold;}
+.fr{ color:#990000}
+.l{float:left;}.r{float:right;}.cl{clear:both;}
+.p2{ padding:2px} .pt5{ padding-top:5px} .pt8{padding-top:8px;} .pl6{padding-left:6px;} .pb1{ padding-bottom:1px} .pt20{ padding-top:20px} .pl15{ padding-left:15px} .pr15{padding-right:15px} .pr10{padding-right:10px} .pr28{ padding-right:28px;}
+.mt-5{ margin-top:-5px} .mt10{ margin-top:10px} .ml3{ margin-left:3px} .ml20{ margin-left:20px} .mr15{ margin-right:15px;} .mr3{ margin-right:3px} .mb5{margin-bottom:5px} .mb20{margin-bottom:20px} .mb10{margin-bottom:10px} .mt8{margin-top:8px} .mt20{margin-top:20px} .ml15{margin-left: 15px} .ml100{margin-left:100px} 
+.w500{width:500px}
+.fcg{ color:#B6B6B6}
+.fontred{ color:red;}
+.w100{width:100%}
+.center{ text-align:center;}
+
+/* clearing hack */
+.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-table;}/* Hides from IE-mac \*/
+html .clearfix {height: 1%;}
+.clearfix {display: block;}/* End hide from IE-mac */
+/* end clearing hack */

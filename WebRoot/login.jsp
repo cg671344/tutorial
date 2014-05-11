@@ -49,7 +49,7 @@
 						</tr>
 						<tr>
 							<td colspan='3'>
-								<img src="css/images/logo.png" style="vertical-align:text-bottom"></img>
+								<!--<img src="css/images/logo.png" style="vertical-align:text-bottom"></img>-->
 								<label style="vertical-align:text-bottom">&nbsp;Application Framework</label>
 							</td>
 						</tr>
@@ -102,9 +102,6 @@
 						</tr>
 						<tr>
 							<td id="resolution" colspan='4' style="color:#00cafc;font-size:12px;font-family:Helvetica;"></td>
-						</tr>
-						<tr>
-							<td colspan='4' style="font-size:12px;">Copyright (C) 1999-<%=(1900 + date.getYear())%> Neusoft Corporation</td>
 						</tr>
 						<tr height="80px">
 							<td colspan='3'></td>

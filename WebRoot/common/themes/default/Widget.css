@@ -1,0 +1,236 @@
+.acap .widgetPane  {
+	margin:5px;
+	outline:none;
+	position:relative;
+}
+
+.acap .layoutTable td .widgetPane.max{
+	margin:6px;
+	-webkit-box-shadow:0px 0px 5px #333333;
+	-moz-box-shadow:0px 0px 5px #333333;
+	box-shadow:0px 0px 5px #333333;
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+}
+
+
+.acap .widgetPaneTitle.noTitle{
+	height:0px;
+	border:0px;
+	border-top: 1px solid #b5bcc7;
+}
+.acap .widgetPaneTitle {
+	/*background-color: #efefef;
+	background-image: url("images/widget_titlebar.png");
+	background-color: #d6d6d6;*/
+	background: -moz-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background:-webkit-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background: -webkit-gradient(linear, left top, left bottom, from(#E9E9E9), to(#C4C4C4));
+	background-color: 	#C4C4C4;
+	background-repeat: repeat-x;
+	border: 1px solid #b5bcc7;
+	padding: 0 7px 0px 7px;
+	/*min-height: 17px;*/
+	line-height:18px;
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+}
+
+.acap .widgetPaneTitleHidden.min{
+	height:21px;
+}
+.acap .widgetPaneTitleHidden.min .widgetPaneTitle{
+	visibility: inherit;
+	border: 1px solid #b5bcc7;
+	background: -moz-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background:-webkit-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background: -webkit-gradient(linear, left top, left bottom, from(#E9E9E9), to(#C4C4C4));
+	background-color: 	#C4C4C4;
+	background-repeat: repeat-x;
+}
+
+.acap .widgetPaneTitleHidden.min .widgetPaneTitleFocus{
+	visibility: inherit;
+}
+.acap .widgetPaneTitleHidden .widgetPaneTitle{
+	background :none;
+	border-bottom: 0px;
+	position:absolute;
+	left:0px;
+	right:0px;
+}
+
+.acap .widgetPaneTitleHidden .widgetPaneTitleFocus{
+	visibility: hidden;
+}
+.acap .widgetPaneTitleHidden .widgetPaneTitleHover .widgetPaneTitleFocus{
+	visibility: inherit;
+}
+
+.acap .widgetPaneTitleHidden .widgetPaneTitle.widgetPaneTitleHover {
+	height:21px;
+	border: 1px solid #b5bcc7;
+	background: -moz-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background:-webkit-linear-gradient(top, #E9E9E9,#C4C4C4);
+	background: -webkit-gradient(linear, left top, left bottom, from(#E9E9E9), to(#C4C4C4));
+	background-color: 	#C4C4C4;
+	background-repeat: repeat-x;
+}
+
+
+.dj_ie6 .acap .widgetPaneTitle {
+	background-image: none;
+}
+
+
+/*
+.acap .widgetPaneTitleActive {
+	background-color: #7dbefa;
+	border-color: #769dc0;
+	background-position: 0 -136px;
+}
+*/
+
+.acap .widgetPaneTitleFocus {
+	margin-top: 2px;
+	padding-bottom: 1px;
+}
+
+/*
+.acap .widgetPane .dijitArrowNode {
+	background-image: url('images/spriteArrows.png');
+	background-repeat: no-repeat;
+	height: 8px;
+	width: 7px;
+}
+*/
+.acap .widgetPane .dijitOpen .dijitArrowNode {
+	background-position: 0 0;
+}
+
+.acap .widgetPane .dijitClosed .dijitArrowNode {
+	background-position: -14px 0;
+}
+
+.acap .widgetPaneFocused .widgetPaneTextNode {
+	color: #000000;
+	/* TODO: do we need this?   we usually don't change text color on focus */
+}
+
+
+
+
+.acap .widgetPaneContentOuter {
+	background: #ffffff;
+	border: 1px solid #b5bcc7;
+	border-top: none;
+	cursor:default;
+}
+
+.acap .widgetPaneTitleHidden .widgetPaneContentOuter{
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+}
+
+.acap .widgetPaneContentInner {
+	padding: 3px;
+	overflow: hidden;
+}
+
+.acap .max .widgetPaneContentInner{
+	overflow:auto;
+}
+
+.acap .widgetPaneTextNode {
+	margin-right: 4px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden; 
+}
+
+
+.acap .widgetIcon {
+	background-repeat: no-repeat;
+	cursor: pointer;
+	float: right;
+	height: 16px;
+	width: 16px;
+	background-position: center;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	margin:1px;
+}
+
+.acap .widgetIcon:hover {
+	background-color: #ffffff;
+	border: solid 1px #769dc0;
+	margin:0px;
+}
+
+.acap	.widgetIconmax {
+	background-image: url("images/widget_max.gif")
+}
+
+.acap	.widgetIconmin {
+	background-image: url("images/widget_min.gif")
+}
+
+.acap	.widgetIconclose {
+	background-image: url("images/widget_close.gif")
+}
+
+.acap	.widgetIconfresh {
+	/*background-image: url("images/refresh_.gif");*/
+}
+
+.acap	.widgetIconsetting {
+	background-image: url("images/widget_menu.gif");
+}
+
+.acap	.widgetIconmin.widgetIconrestore {
+	background-image: url("images/widget_restore.gif");
+}
+
+.acap	.widgetIconmax.widgetIconrestore {
+	background-image: url("images/widget_restore.gif");
+}
+
+
+
+.acap .widgetPaneMenuOuter{
+	position:relative;
+	width:1px;
+	display:none;
+}
+
+.acap .widgetPaneMenuInner{
+	background: none repeat scroll 0 0 #FFFFFF;
+	position:absolute;
+	top:16px;
+	left:-76px;
+	width:80px;
+	border:1px solid #769dc0;
+	z-index: 10000;
+}
+
+
+.acap .widgetPaneMenuItem{
+    background-color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    padding-left: 7px;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: left;
+}
+
+
+.acap a:hover.widgetPaneMenuItem{
+	background-color: #ECF4FD;
+}

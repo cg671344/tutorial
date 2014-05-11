@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,7 +19,7 @@ public class PostAccounts{
 	@Autowired
     private BankService bankService;
 
-    @RequestMapping("/post.html")
+    @RequestMapping("/post.do")
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // Security check (this is unnecessary if Spring Security is performing the authorization)
 //        if (!request.isUserInRole("ROLE_TELLER")) {

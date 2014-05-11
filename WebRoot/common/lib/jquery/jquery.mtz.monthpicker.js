@@ -1,0 +1,250 @@
+/*
+ * jQuery UI Monthpicker
+ *
+ * @licensed MIT <see below>
+ * @licensed GPL <see below>
+ *
+ * @author Luciano Costa
+ * http://lucianocosta.info/jquery.mtz.monthpicker/
+ *
+ * Depends:
+ *	jquery.ui.core.js
+ *
+ * 2013.08.08修改 by wangcaide：
+ * 将第79行代码：
+ * id: "monthpicker_" + (Math.random() * Math.random()).toString().replace('.', ''),
+ * 改成：
+ * id: "monthpicker_" + $(this).attr("id"),
+ * 使得弹出的月份对话框窗口的id可知(monthpicker_ +　input元素的id)
+ * 
+ * 
+ */
+
+/**
+ * MIT License
+ * Copyright (c) 2011, Luciano Costa
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy 
+ * of this software and associated documentation files (the "Software"), to deal 
+ * in the Software without restriction, including without limitation the rights 
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+ * copies of the Software, and to permit persons to whom the Software is 
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+/**
+ * GPL LIcense
+ * Copyright (c) 2011, Luciano Costa
+ * 
+ * This program is free software: you can redistribute it and/or modify it 
+ * under the terms of the GNU General Public License as published by the 
+ * Free Software Foundation, either version 3 of the License, or 
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License 
+ * for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along 
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+(function ($) {
+
+    var methods = {
+        init : function (options) { 
+            return this.each(function(){
+                var 
+                    $this = $(this),
+                    data = $this.data('monthpicker'),
+                    year = (options && options.year) ? options.year : (new Date()).getFullYear(),
+                    settings = $.extend({
+                        pattern: 'yyyy-mm',
+                        selectedMonth: null,
+                        selectedYear: year,
+                        startYear: year - 10,
+                        finalYear: year + 10,
+                        monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        id: "monthpicker_" + $(this).attr("id"),
+                        openOnFocus: true,
+                        disabledMonths: []
+                    }, options);
+
+                settings.dateSeparator = settings.pattern.replace(/(mm|m|yyyy|yy|y)/ig,'');
+
+                // If the plugin hasn't been initialized yet for this element
+                if (!data) {
+                    $(this).data('monthpicker', {
+                        'target': $this,
+                        'settings': settings
+                    });
+
+                    if (settings.openOnFocus === true) {
+                        $this.bind('focus', function () {
+                            $this.monthpicker('show');
+                        });
+                    }
+
+                    $this.monthpicker('mountWidget', settings);
+
+                    $this.bind('monthpicker-click-month', function (e, month, year) {
+                        $this.monthpicker('setValue', settings);
+                        $this.monthpicker('hide');
+                    });
+
+                    $(document).mousedown(function (e){
+                        if(!e.target.className || e.target.className.indexOf('mtz-monthpicker') < 0){
+                            $this.monthpicker('hide');
+                        }
+                    });
+                }
+
+            });
+        },
+
+        show: function (n) {
+            var widget = $('#' + this.data('monthpicker').settings.id);
+            widget.show();
+            widget.find('select').focus();
+            this.trigger('monthpicker-show');
+        },
+
+        hide: function () {
+            var widget = $('#' + this.data('monthpicker').settings.id);
+            if (widget.is(':visible')) {
+                widget.hide();
+                this.trigger('monthpicker-hide');
+            }
+        },
+
+        setValue: function (settings) {
+            var 
+                month = settings.selectedMonth,
+                year = settings.selectedYear;
+
+            if(settings.pattern.indexOf('mm') >= 0 && settings.selectedMonth < 10) {
+                month = '0' + settings.selectedMonth;
+            }
+
+            if(settings.pattern.indexOf('yyyy') < 0) {
+                year = year.toString().substr(2,2);
+            } 
+
+            if (settings.pattern.indexOf('y') > settings.pattern.indexOf(settings.dateSeparator)) {
+                this.val(month + settings.dateSeparator + year);
+            } else {
+                this.val(year + settings.dateSeparator + month);
+            }
+        },
+
+        disableMonths: function (months) {
+            var 
+                settings = this.data('monthpicker').settings,
+                container = $('#' + settings.id);
+
+            settings.disabledMonths = months;
+
+            container.find('.mtz-monthpicker-month').each(function () {
+                var m = parseInt($(this).data('month'));
+                if ($.inArray(m, months) >= 0) {
+                    $(this).addClass('ui-state-disabled');
+                } else {
+                    $(this).removeClass('ui-state-disabled');
+                }
+            });
+        },
+
+        mountWidget: function (settings) {
+            var
+                monthpicker = this,
+                container = $('<div id="'+ settings.id +'" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="border:1px solid #CFD3D7;" />'),
+                header = $('<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all mtz-monthpicker" style="margin-top:3px;margin-left:1px;margin-right:1px;background-image:-moz-linear-gradient(-90deg, #ddd, #CFD3D7);border:1px solid #bbb;" />'),
+                combo = $('<select class="mtz-monthpicker mtz-monthpicker-year" />'),
+                table = $('<table class="mtz-monthpicker" />'),
+                tbody = $('<tbody class="mtz-monthpicker" />'),
+                tr = $('<tr class="mtz-monthpicker" />'),
+                td = '';
+                selectedYear = settings.selectedYear,
+                option = null;
+
+            container.css({
+                position:'absolute',
+                zIndex:999999,
+                whiteSpace:'nowrap',
+                width:'192px',
+                overflow:'hidden',
+                textAlign:'center',
+                display:'none',
+                top: monthpicker.offset().top + monthpicker.outerHeight(),
+                left: monthpicker.offset().left
+            });
+
+            // mount years combo
+            for (var i = settings.startYear; i <= settings.finalYear; i++) {
+                var option = $('<option class="mtz-monthpicker"  />').attr('value', i).append(i);
+                if (settings.selectedYear === i) {
+                    option.attr('selected', 'selected');
+                }
+                combo.append(option);
+            }
+            header.append(combo).appendTo(container);
+
+            // mount months table
+            for (var i=1; i<=12; i++) {
+                td = $('<td class="ui-state-default mtz-monthpicker mtz-monthpicker-month" style="padding:0px;cursor:pointer;width:64px;background:#FFF;border:1px solid #D4D4D4;color:#777;" />').attr('data-month',i);
+                td.append(settings.monthNames[i-1]);
+                tr.append(td).appendTo(tbody);
+                if (i % 3 === 0) {
+                    tr = $('<tr class="mtz-monthpicker"/>'); 
+                }
+            }
+
+            table.append(tbody).appendTo(container);
+
+            container.find('.mtz-monthpicker-month').bind('click', function () {
+                var m = parseInt($(this).data('month'));
+                if ($.inArray(m, settings.disabledMonths) < 0 ) {
+                    settings.selectedMonth = $(this).data('month');
+                    monthpicker.trigger('monthpicker-click-month', $(this).data('month'));
+                }
+            });
+
+            container.find('.mtz-monthpicker-year').bind('change', function () {
+                settings.selectedYear = $(this).val();
+                monthpicker.trigger('monthpicker-change-year', $(this).val());
+            });
+
+            container.appendTo('body');
+        },
+
+        destroy: function () {
+            return this.each(function () {
+                // TODO: look for other things to remove
+                $(this).removeData('monthpicker');
+            });
+        }
+
+    };
+
+    $.fn.monthpicker = function (method) {
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call( arguments, 1 ));
+        } else if (typeof method === 'object' || ! method) {
+            return methods.init.apply(this, arguments);
+        } else {
+            $.error('Method ' + method + ' does not exist on jQuery.mtz.monthpicker');
+        }    
+    };
+
+})(jQuery);

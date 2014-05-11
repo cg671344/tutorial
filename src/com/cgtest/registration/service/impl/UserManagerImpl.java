@@ -21,7 +21,7 @@ public class UserManagerImpl implements UserManager {
 		return userDao;
 	}
 	
-	public boolean exists(User u) throws Exception {
+	public boolean exists(User u) {
 		return userDao.checkUserExistsWithName(u.getUsername());
 		
 	}
@@ -29,10 +29,10 @@ public class UserManagerImpl implements UserManager {
 	/* (non-Javadoc)
 	 * @see com.bjsxt.registration.service.impl.UserManager#add(com.bjsxt.registration.model.User)
 	 */
-	public void add(User u) throws Exception {
+	public void save(User u){
 		userDao.save(u);
 	}
-
+	
 	public List<User> getUsers() {
 		// TODO Auto-generated method stub
 		return this.userDao.getUsers();

@@ -1,0 +1,595 @@
+/**
+* display列表样式
+*/
+.table_main{padding:0 15px 0 15px;}
+.data_grid {
+	border-collapse:collapse;
+	border-spacing:0;
+	width:100%;
+	line-height: 26px;
+	border: 1px solid #CBCBCB;
+	font-size: 12px;
+	line-height: 22px;
+	table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+}
+
+.data_grid tr td {
+	font-size: 12px;
+	padding: 1px;
+	background: #fff;
+	border: 1px solid #CBCBCB;
+	word-break:keep-all;/* 不换行 */
+	white-space:nowrap;/* 不换行 */
+	overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+	text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+
+.data_grid thead th {
+	color: #333333;
+	font-weight: bold;
+	text-align: center;
+	background-color: #FFF9E1;
+	height: 32px;
+	line-height: 30px;
+	text-align: left;
+	padding-left: 8px;
+	word-break:keep-all;/* 不换行 */
+	white-space:nowrap;/* 不换行 */
+	overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+	text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+
+.data_grid tbody td {
+	text-align: left;
+	padding-left: 8px;
+}
+
+.data_grid tbody tr.even td {
+	background: #f3f3f3;;
+}
+
+.data_grid tbody tr.over td {
+	color: #000;
+	background-color: #C6E3FF;
+}
+
+/* Opera fix */
+.data_grid head:first-child+body tr.ruled td {
+	background-color: #C6E3FF;
+}
+
+.pageupdown{ width:100%;font-size: 12px}
+.pagebanner{}
+
+/*ѡ����ʽ*/
+#main_tab {
+	border: 1px solid #ADADAD;
+	clear: both;
+	background: #FFF3B3;
+	padding-top: 0px;
+}
+
+#contents {
+	background: #FFFDF3;
+	padding-top: 15px;
+	padding-right: 1.5em;
+	padding-bottom: 5px;
+	padding-left: 1.5em;
+	
+}
+
+#header_tab {
+	position: relative;
+	width: 100%;
+	height: 2em;
+	width: 45em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#header_tab ul#primary {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: -1px;
+	width: 45em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#header_tab ul#primary li  {
+	display: inline;
+	list-style: none;
+}
+
+#header_tab ul#primary a,#header_tab ul#primary span,#header_tab ul#primary a.current {
+	width: auto;
+	display: block;
+	float: left;
+	text-align: center;
+	font-family: tahoma, verdana, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	color: #333;
+	margin-top: 1px;
+	margin-right: 2px;
+	margin-bottom: 0;
+	margin-left: 0;
+	padding-top: 4px;
+	padding-right: 8px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	height: 15px;
+}
+
+#header_tab ul#primary span,#header_tab ul#primary a.current,#header_tab ul#primary a.current:hover {
+	border: 1px solid #ADADAD;
+	border-bottom: none;
+	background: #FFF3B3;
+	padding-bottom: 6px;
+	margin-top: 0;
+}
+
+#header_tab ul#primary a {
+	background: #FFFAE1;
+	border: 1px solid #AAA;
+	border-bottom: none;
+}
+
+#header_tab ul#primary a:hover {
+	margin-top: 0;
+	border-color: #666;
+	background: #FFF7CD;
+	padding-bottom: 5px;
+}
+
+#header_tab ul#secondary {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	bottom: -1.4em;
+	left: 1px;
+	width: 50em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#header_tab ul#secondary li a,#header_tab ul#secondary li span {
+	width: auto;
+	display: block;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+	text-align: auto;
+	border: none;
+	border-right: 1px dotted #AAA;
+	background: none;
+
+}
+
+#header_tab ul#secondary li a {
+	color: #06C;
+	text-decoration: underline;
+}
+
+#header_tab ul#secondary li a:hover {
+	color: #333;
+	background: transparent;
+	padding: 0 10px;
+	border: none;
+	border-right: 1px dotted #AAA;
+}
+
+#header_tab ul#secondary li a:active {
+	color: #000;
+	background: transparent;
+}
+
+#header_tab ul#secondary li:last-child a { border: none; }
+
+
+/*============form��ʽ==============================*/
+.inputtip{
+	width:100%;
+	height:auto;
+	padding-top:6px;
+	padding-bottom:7px;
+	background-image: url(../images/content/xuxian.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	overflow: visible;
+	float: left;
+}
+.radiostyle{
+	margin-left:0px;
+	margin-right:29px;
+	width:auto;
+	float:left
+}
+@-moz-document url-prefix(){.radiostyle{margin-left:24px; margin-right:10px; width:auto; float:left}}
+
+
+/******修复无fieldset页面文本框不对齐*******/
+form.formular .inputtip label{
+	display: block;
+	color: #000;
+	float: left;
+	width: 83px;
+	text-align: right;
+	margin-right: 5px;
+	margin-top: 9px;
+	height: auto;
+	overflow: visible;
+
+}
+form.formular fieldset .inputtip label{
+	display: block;
+	color: #000;
+	float: left;
+	width: 83px;
+	text-align: right;
+	margin-right: 5px;
+	margin-top: 7px;
+	height: auto;
+	overflow: visible;
+
+}
+.inputtip .tip {
+	margin-left:10px;
+	width:auto;
+	text-align:left;
+	color: #9D9D9D;
+	float:left;
+	margin-top: 4px;
+}
+form.formular {
+	font-family: tahoma, verdana, "sans-serif";
+	font-size: 12px;
+	width:auto;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding-top: 0px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	margin-top: 0px;
+}
+.open{
+	width:67px;
+	height:23px;
+	z-index: 999;
+	
+	right:20px;
+	float: right;
+	position: absolute;
+	top:15px;
+	background-image: url(../images/content/open.jpg);
+	background-repeat: no-repeat;
+	display: block;
+}
+
+.close{
+	width:67px;
+	height:23px;
+	z-index: 999;
+	
+	right:20px;
+	float: right;
+	position: absolute;
+	top:15px;
+	background-image: url(../images/content/close.jpg);
+	background-repeat: no-repeat;
+	display: block;
+}
+@-moz-document url-prefix(){.open{
+	width:67px;
+	height:23px;
+	z-index: 999;
+	
+	right:20px;
+	float: right;
+	position: absolute;
+	top:-35px;
+	background-image: url(../images/content/open.jpg);
+	background-repeat: no-repeat;
+	display: block;
+}}
+@-moz-document url-prefix(){.close{
+	width:67px;
+	height:23px;
+	z-index: 999;
+	
+	right:20px;
+	float: right;
+	position: absolute;
+	top:-37px;
+	background-image: url(../images/content/open.jpg);
+	background-repeat: no-repeat;
+	display: block;
+}}
+@-moz-document url-prefix(){.oc{
+	width:67px;
+	height:21px;
+	z-index: 999;
+	top: 25px;
+	right:20px;
+	float: right;
+	position: absolute;
+	top:-35px;
+}}
+.formular fieldset {
+	margin-top: 0px;
+	padding : 15px;
+	border: 1px solid #B5B8C8;
+	position: relative;
+}
+@-moz-document url-prefix(){.formular fieldset {
+	margin-top: 0px;
+	padding : 15px;
+	border: 1px solid #B5B8C8;
+	position: relative;
+	margin-top:10px;
+}}
+
+.formular legend {
+	font-size: 14px;
+	color: #15428B;
+	font-weight: 900;
+	
+}
+/*===============checkbox======================*/
+.checkboxstyle{	margin-left:0px;
+	margin-right:10px;
+	width:auto;
+	float:left}
+.checkboxw{ width:30%; margin-top:5px; float:left; }
+
+.formular .inputtip .checkboxstyle{
+margin-top: 8px;
+}
+
+.formular .checkboxw span {
+	color: #000;
+	float: left;
+	display: block;
+	width: 75px;
+	text-align: left;
+	margin-right: 5px;
+}
+
+.formular input, .formular select, .formular textarea {
+	padding-left: 3px;
+}
+
+.formular .formInput {
+	width: 250px;
+	color: #555;
+	padding: 3px;
+	border: 1px solid #C1C4D0;
+	font-size: 14px;
+	margin-top: 4px;
+	background: #FFF;
+	float: left;
+}
+.formular textarea {
+	width: 250px;
+	height:70px;
+	color: #555;
+	padding: 4px;
+	border: 1px solid #B5B8C8;
+	font-size: 14px;
+	margin-top: 4px;
+	background: #FFF;
+}
+.formular span.checkbox, .formular .checkbox {
+	display: inline;
+}
+
+.formular hr {
+	clear: both;
+	visibility: hidden;
+}
+
+.formular .fc-error {
+	width: 350px;
+	color: 555;
+	padding: 4px;
+	border: 1px solid #B5B8C8;
+	font-size: 12px;
+	margin-bottom: 15px;
+	background: #FFEAEA;
+}
+
+/*------------button--------------------*/
+a em {
+font-family:"����";
+}
+address, caption, cite, code, dfn, em, th, var {
+font-style:normal;
+font-weight:normal;
+}
+a.btn_num{display:inline-block;background-position:-450px -4px;background-repeat:no-repeat;padding-left:6px;}
+a.btn_num em {background-position:right -29px;display:inline-block;padding:0 17px 0 11px;}
+a.btn_num:hover{background-position:-450px -54px;text-decoration:none;}
+a.btn_num:hover em{background-position:right -79px;text-decoration:none;}
+.btn_num,.btn_num em{display:-moz-inline-stack;display:inline-block;background:url(../images/content/new_index_bg.png) -450px -29px no-repeat;height:23px;color:#333;line-height:23px;font-size:12px;font-weight:normal;cursor:pointer;text-decoration:none;}
+.button_box{
+	height:25px
+}
+/*============key button=================*/
+a.btn_num_key{display:inline-block;background-position:-450px -112px;background-repeat:no-repeat;padding-left:6px;}
+a.btn_num_key em {background-position:right -137px;display:inline-block;padding:0 17px 0 11px;}
+a.btn_num_key:hover{background-position:-450px -162px;text-decoration:none;}
+a.btn_num_key:hover em{background-position:right -187px;text-decoration:none;}
+.btn_num_key,.btn_num_key em{display:-moz-inline-stack;display:inline-block;background:url(../images/content/new_index_bg.png) -450px -112px no-repeat;height:23px;color:#333;line-height:23px;font-size:12px;font-weight:normal;cursor:pointer;text-decoration:none;}
+
+
+
+
+/*------------�����б�--------------------*/
+.inputtip .jslct{margin-top:4px;float:left;}
+select{ width:auto}
+.jslct {
+	color:#666;
+	font-family:Verdana;
+	display:inline-block;
+	*display:inline;
+	zoom:1;
+	font-size:12px;
+	position:relative;
+	line-height:12px;
+	vertical-align:middle;
+	cursor:default;
+	border:1px solid #ccc;
+	z-index:0;
+	background-image: url(../images/content/arrow.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+.jslct_hover {
+	border:1px solid #333
+}
+.jslct div.jslct_t {
+	padding:3px 25px 3px 3px;
+	border-bottom:1px solid #fff;
+	position:relative;
+	z-index:2;
+	*display:block!important;
+	*display:inline;
+	zoom:1;
+}
+.jslct em {
+	font-style:normal;
+	margin:0;
+	padding:2px 0px 1px 3px;
+	line-height:12px;
+	display:block;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.jslct dl, .jslct dl dd {
+	padding:0;
+	margin:0;
+	list-style:none
+}
+.jslct dl {
+	background:#fff;
+	position:absolute;
+	top:21px;
+	left:-1px;
+	border:1px solid #ccc;
+	cursor:default;
+	line-height:22px;
+	padding:4px 4px 4px 4px;
+	z-index:1;
+	display:none;
+}
+.jslct_hover dl {
+	border:1px solid #333!important
+}
+.jslct dl dd {
+	padding:0px 4px 2px 4px;
+	*padding:2px 4px 0 4px;
+	border-top:1px dotted #ccc!important;
+	border-top:1px dotted #efefef;
+	white-space:nowrap;
+	background:#fff;
+	cursor:pointer;
+	*border-left:1px solid #fff;
+}
+.jslct dl dd.hover {
+	background:#666;
+	color:#fff;
+}
+.jslct .jslcted {
+	background:#efefef;
+}
+.jslct dl dd.noborder {
+	border:none!important
+}
+
+/* JQuery Validation */
+div.cusErrorPanel
+{
+	height: 22px;
+	overflow: hidden;
+	text-indent: 5px;
+	line-height: 22px;
+	font-size: 12px;
+	background-color:#fff;
+	opacity:0.9;
+	padding-right: 7px;
+	padding-bottom: 0;
+	padding-left: 0px;
+	z-index: 1;
+	position: relative;
+	top: -2px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #f4a0a0;
+	border-bottom-color: #f4a0a0;
+	border-left-color: #f4a0a0;
+	color: #333333;
+	width: auto;
+	float: left;
+}
+div.toparrow{
+	z-index: 9999;
+	position:absolute;
+	background-image: url(../images/content/toparrow.png);
+	background-repeat: no-repeat;
+	background-position: 0px top;
+	width: auto;
+	padding-top: 9px;
+}
+
+/*===================tab=========================*/
+#con {
+	FONT-SIZE: 12px;
+	WIDTH: 100%;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+#tags {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px;PADDING-TOP: 0px; HEIGHT: 23px
+}
+#tags LI {
+	BACKGROUND: url(../images/content/tagleft.gif) no-repeat left bottom; FLOAT: left; MARGIN-RIGHT: 1px; LIST-STYLE-TYPE: none; HEIGHT: 23px
+}
+#tags LI A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(../images/content/tagright.gif) no-repeat right bottom; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #999;LINE-HEIGHT: 23px; PADDING-TOP: 0px; HEIGHT: 23px; TEXT-DECORATION: none
+}
+#tags LI.emptyTag {
+	BACKGROUND: none transparent scroll repeat 0% 0%; WIDTH: 4px
+}
+#tags LI.selectTag {
+	BACKGROUND-POSITION: left top; MARGIN-BOTTOM: -2px; POSITION: relative; HEIGHT: 25px
+}
+#tags LI.selectTag A {
+	BACKGROUND-POSITION: right top; COLOR: #000; LINE-HEIGHT: 25px; HEIGHT: 25px
+}
+#tagContent {
+	BORDER-RIGHT: #aecbd4 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #aecbd4 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; BORDER-LEFT: #aecbd4 1px solid;PADDING-TOP:1px; BORDER-BOTTOM: #aecbd4 1px solid; BACKGROUND-COLOR: #fff
+}
+.tagContent {
+	DISPLAY: none;
+	
+
+	COLOR: #474747;
+	HEIGHT: auto;
+	padding:10px 0 0 0;
+
+}
+#tagContent DIV.selectTag {
+DISPLAY: block
+}
+
+
+/*succeed/lose*/
+.succeed,.lose{height:100px; margin-top:20px;  background-repeat:no-repeat; background-position:center}
+.succeed{background-image:url(../images/content/succeed.jpg);}
+.lose{background-image:url(../images/content/lose.jpg);}
