@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.cgtest.exception.MyException;
 import com.cgtest.registration.model.Hangong;
 import com.cgtest.registration.model.Record;
 import com.cgtest.registration.model.Record.HankouSequence;
@@ -237,13 +238,21 @@ public class UploadXml {
 					Record record = new Record();
 					record.setCreateTime(processTime);
 					record.setReportNo(reportNo);
+					
+					//标准模板有15列数据
+					if(hssfRow.getLastCellNum() < 15){
+						throw new MyException("Excel模板错误，数据小于15列！");
+					}
 					// 循环列Cell
-					for (int cellNum = 0; cellNum <= hssfRow.getLastCellNum(); cellNum++) {
+					for (int cellNum = 0; cellNum < 15; cellNum++) {
 						Cell hssfCell = hssfRow.getCell(cellNum);
 						if (hssfCell == null) {
 							continue;
 						}
 						String value = getValue(hssfCell);
+						if("".equals(value)){
+							throw new MyException("有数据项为空");
+						}
 						switch (cellNum) {
 							case 0:
 								int serialNo = (int)Math.round(Double.valueOf(value));
@@ -314,7 +323,11 @@ public class UploadXml {
 								record.setFanxiuNumber(fanxiuNumber);
 								break;
 							case 7:
-								record.setJianyanDate(StringUtils.remove(value, '-'));
+								String dateString = StringUtils.remove(value, '-');
+								record.setJianyanDate(dateString);
+								if(dateString == null || dateString.length() != 8){
+									throw new MyException("日期必须是2013-01-01或20130101格式的文本");
+								}
 								break;
 							case 8:
 								record.setJianyanResult(value);
@@ -341,6 +354,8 @@ public class UploadXml {
 						}
 					}
 					recordManager.saveRecord(record);
+				}catch(MyException e){
+					throw new RuntimeException("处理第" + (rowNum + 1) +"行数据出错"+"("+ e.getMessage()+")");
 				}catch(Exception e){
 					throw new RuntimeException("处理第" + (rowNum + 1) +"行数据出错，请检查数据!");
 				}
