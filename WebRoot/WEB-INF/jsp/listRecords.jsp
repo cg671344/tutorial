@@ -76,7 +76,7 @@
 				<display:column title="焊口编号" property="hankouNo" sortable="true"
 					headerClass="w4%" />
 				<display:column title="等轴图号" property="chartNo" sortable="true"
-					headerClass="w6%" maxLength="10" />
+					headerClass="w7%" maxLength="14" />
 				<display:column title="报告编号" property="reportNo" sortable="true"
 					headerClass="w4%" maxLength="8" />
 				<display:column title="片子数" property="pianziNumber" sortable="true"
@@ -84,7 +84,7 @@
 				<display:column title="返修数" property="fanxiuNumber" sortable="true"
 					headerClass="w3%" />
 				<display:column title="检验日期" property="jianyanDate" sortable="true"
-					maxLength="8" headerClass="w5%" />
+					maxLength="8" headerClass="w4%" />
 				<display:column title="结果" property="jianyanResult" sortable="true"
 					headerClass="w3%" />
 				<display:column title="规格1" property="guige1" sortable="true"
@@ -94,7 +94,7 @@
 				<display:column title="RCCM级别" property="rccmLevel" sortable="true"
 					headerClass="w5%" />
 				<display:column title="焊工号" property="hangongNo" sortable="true"
-					headerClass="w4%" />
+					headerClass="w3%" />
 				<display:column title="焊缝类型" property="hanfengType" sortable="true"
 					headerClass="w4%" />
 				<display:column title="委托单位" property="weituoUnit" sortable="true"
@@ -102,7 +102,7 @@
 				<display:column title="细化区域" property="zone" sortable="true"
 					headerClass="w4%" />
 				<display:column title="责任区" property="zoneClass" sortable="true"
-					headerClass="w4%" />
+					headerClass="w3%" />
 			</display:table>
 		</div>
 		<div id="zoneContainer" class="table_main" style="display:none;padding:10px 0px 0px 10px">

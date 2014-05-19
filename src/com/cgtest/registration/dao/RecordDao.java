@@ -406,16 +406,16 @@ public class RecordDao{
 		String hql = null;
 		Query query = null;
 		if(chartNo!=null && hankouNo!=null){
-			hql = "from Record r where r.chartNo = :chartNo and r.hankouNo =:hankouNo";
+			hql = "from Record r where r.chartNo like :chartNo and r.hankouNo =:hankouNo";
 			query = getSession().createQuery(hql).setFirstResult(
 					(pageNo - 1) * pageSize).setMaxResults(pageSize);
-			query.setParameter("chartNo", chartNo);
+			query.setParameter("chartNo", "%" + chartNo + "%");
 			query.setParameter("hankouNo", hankouNo);
 		}else if(chartNo != null && hankouNo == null){
-			hql = "from Record r where r.chartNo = :chartNo";
+			hql = "from Record r where r.chartNo like :chartNo";
 			query = getSession().createQuery(hql).setFirstResult(
 					(pageNo - 1) * pageSize).setMaxResults(pageSize);
-			query.setParameter("chartNo", chartNo).setFirstResult(
+			query.setParameter("chartNo", "%" + chartNo + "%").setFirstResult(
 					(pageNo - 1) * pageSize).setMaxResults(pageSize);
 		}else if(chartNo==null && hankouNo!=null){
 			hql = "from Record r where r.hankouNo = :hankouNo";
@@ -444,14 +444,14 @@ public class RecordDao{
 		Query query = null;
 		Long totalRecords = 0L;
 		if(chartNo!=null && hankouNo!=null){
-			hql = "select count(*) from Record r where r.chartNo = :chartNo and r.hankouNo =:hankouNo";
+			hql = "select count(*) from Record r where r.chartNo like :chartNo and r.hankouNo =:hankouNo";
 			query = getSession().createQuery(hql);
-			query.setParameter("chartNo", chartNo);
+			query.setParameter("chartNo", "%" + chartNo + "%");
 			query.setParameter("hankouNo", hankouNo);
 		}else if(chartNo != null && hankouNo == null){
-			hql = "select count(*) from Record r where r.chartNo = :chartNo";
+			hql = "select count(*) from Record r where r.chartNo like :chartNo";
 			query = getSession().createQuery(hql);
-			query.setParameter("chartNo", chartNo);
+			query.setParameter("chartNo", "%" + chartNo + "%");
 		}else if(chartNo==null && hankouNo!=null){
 			hql = "select count(*) from Record r where r.hankouNo = :hankouNo";
 			query = getSession().createQuery(hql);

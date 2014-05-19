@@ -274,13 +274,18 @@ public class UploadXml {
 								break;	
 							case 3:
 								record.setChartNo(value);
+								String zeroToFive = StringUtils.substring(value, 0, 5);// 第0—4位，从0开始
 								String threeToFive = StringUtils.substring(value, 3, 6);// 第3——5位，从0开始
 								String two = StringUtils.substring(value, 3, 4);//第3位，从0开始
 								//采用先特殊，后一般的处理原则
+								//0、小区域“EUF8N”->8N 大区域N
 								//1、xLHQ->L xLHP -> L xVVP->R xTES->N xASG->W
 								//2、xS->N xP->L xM->L xD->L xE->L
 								//3、等轴图号第2～3位是区域，第3位是区域大类
-								if (threeToFive.equals("LHQ")
+								if(zeroToFive.equals("EUF8N")){
+									record.setZone("8N");
+									record.setZoneClass("N");
+								}else if (threeToFive.equals("LHQ")
 									|| threeToFive.equals("LHP")){
 									String twoToFive = StringUtils.substring(value, 2, 6);
 									record.setZone(twoToFive);
@@ -298,7 +303,13 @@ public class UploadXml {
 									record.setZone(twoToFive);
 									record.setZoneClass("W");
 								}else if(two.equals("S")){
-									record.setZone(StringUtils.substring(value, 2, 4));
+									//判断是不是ES,如果是ES，则与前面两个字符一起组成细化区域
+									String twoToFourEs = StringUtils.substring(value, 2, 4);
+									if(twoToFourEs.equals("ES")){
+										record.setZone(StringUtils.substring(value, 0, 4));
+									}else{
+										record.setZone(twoToFourEs);
+									}
 									record.setZoneClass("N");
 								} else if (two.equals("P")
 									|| two.equals("M")
@@ -309,6 +320,14 @@ public class UploadXml {
 								}else {
 									record.setZone(StringUtils.substring(value, 2, 4));
 									record.setZoneClass(StringUtils.substring(value, 3, 4));
+								}
+								//大区域必须是K、L、R、W、N中的其中一个，责任区错误
+								if(!record.getZoneClass().equals("K") &&
+										!record.getZoneClass().equals("L") &&
+										!record.getZoneClass().equals("R") &&
+										!record.getZoneClass().equals("W") &&
+										!record.getZoneClass().equals("N")){
+									throw new MyException("责任区错误,必须是K、L、R、W、N其中一个");
 								}
 								break;
 							case 4:

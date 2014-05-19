@@ -86,6 +86,29 @@ public class RecordController {
     }
     
     
+    @RequestMapping("/hangongChartNoQueryForAdmin.do")
+    public String hangongChartNoQueryForAdmin(HttpServletRequest request, ModelMap modelMap) throws Exception {
+    	String chartNo = request.getParameter("chartNo");
+    	String hankouNo = request.getParameter("hankouNo");
+    	int pageIndex;
+		String PARAMETER_PAGE = (new ParamEncoder("element").
+				 encodeParameterName(TableTagParameters.PARAMETER_PAGE));
+		String pageIndexString = request.getParameter(PARAMETER_PAGE);
+		if(pageIndexString==null||pageIndexString==""){
+			pageIndex=1;
+		}
+		else{
+			pageIndex = Integer.parseInt(pageIndexString);
+		}
+		PageModel pageModel = recordManager.getPagedHangongChartNoQueryRecord(chartNo, hankouNo, pageIndex, PAGE_SIZE);;
+		Map<String,Object>rs=new HashMap<String,Object>();
+		rs.put("results", pageModel.getList());
+		rs.put("total",pageModel.getTotalRecords());
+		rs.put("pagesize",PAGE_SIZE);
+		request.setAttribute("rs", rs);
+        return "/hangong/hangongChartNoQueryForAdmin";
+    }
+    
     @ResponseBody
     @RequestMapping("/deleteRecords.do")
     public String deleteRecords(HttpServletRequest request, ModelMap modelMap) throws Exception {

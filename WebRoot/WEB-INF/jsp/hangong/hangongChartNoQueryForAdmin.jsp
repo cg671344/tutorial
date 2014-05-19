@@ -39,8 +39,9 @@
         pageContext.setAttribute("dyndecorator", decorator);
         </jsp:scriptlet>
 	</head>
-	<body>
-		<div class="table_main" align="left" style="padding-top:10px">
+<body>
+		<div id="recordContainer" class="table_main" align="left"
+			style="padding-top: 10px">
 			<div style="padding: 5px; font-size: 12px;">
 				<label for="chartNo">
 					等轴图号：
@@ -52,27 +53,33 @@
 				<input id="hankouNo" type="text" value="${hankouNo}"/>
 				<input type="button" value="查询" onclick="query()" />
 			</div>
+			<input type="button" value="删除记录"
+				onclick="deleteChecked('<%=contextPath%>/hangongChartNoQueryForAdmin.do?id=')" />
 			<display:table id="listrecord" name="rs.results" export="false"
-				pagesize="${rs.pagesize}" requestURI="/hangongChartNoQuery.do" sort="list"
+				pagesize="${rs.pagesize}" requestURI="/hangongChartNoQueryForAdmin.do" sort="list"
 				uid="element" style="true" partialList="true" size="rs.total"
 				decorator="com.displaytag.myDisplaytag.tableDecrator.TableWitdhDecrator"
 				excludedParams="_chk" class="data_grid">
-				<display:column title="制造号" property="zhizaoNo" sortable="true"
-					headerClass="w4%" maxLength="8"/>
+				<display:column headerClass="w2%">
+					<input name="_chk" type="checkbox" value="${element.id}" />
+				</display:column>
+				<display:column title="制造号" sortable="true" headerClass="w4%"
+					maxLength="8"><a style="cursor: pointer;" 
+						onclick="editZone('${element.id}','${element.zone}','${element.zoneClass}')">${element.zhizaoNo}</a></display:column>
 				<display:column title="焊口编号" property="hankouNo" sortable="true"
 					headerClass="w4%" />
 				<display:column title="等轴图号" property="chartNo" sortable="true"
-					headerClass="w8%" maxLength="15"/>
+					headerClass="w7%" maxLength="14" />
 				<display:column title="报告编号" property="reportNo" sortable="true"
-					headerClass="w4%" maxLength="8"/>
+					headerClass="w4%" maxLength="8" />
 				<display:column title="片子数" property="pianziNumber" sortable="true"
 					headerClass="w3%" />
 				<display:column title="返修数" property="fanxiuNumber" sortable="true"
 					headerClass="w3%" />
 				<display:column title="检验日期" property="jianyanDate" sortable="true"
-					maxLength="8" headerClass="w4%" />	
-				<display:column title="结果" property="jianyanResult"
-					sortable="true" headerClass="w3%" />
+					maxLength="8" headerClass="w4%" />
+				<display:column title="结果" property="jianyanResult" sortable="true"
+					headerClass="w3%" />
 				<display:column title="规格1" property="guige1" sortable="true"
 					maxLength="6" headerClass="w3%" />
 				<display:column title="规格2" property="guige2" sortable="true"
@@ -80,7 +87,7 @@
 				<display:column title="RCCM级别" property="rccmLevel" sortable="true"
 					headerClass="w5%" />
 				<display:column title="焊工号" property="hangongNo" sortable="true"
-					headerClass="w4%" />
+					headerClass="w3%" />
 				<display:column title="焊缝类型" property="hanfengType" sortable="true"
 					headerClass="w4%" />
 				<display:column title="委托单位" property="weituoUnit" sortable="true"
@@ -90,10 +97,44 @@
 				<display:column title="责任区" property="zoneClass" sortable="true"
 					headerClass="w3%" />
 			</display:table>
-		</div><div align="center"> 
-		<script type="text/javascript" src="<%=contextPath%>/static/js/common/common.js"></script> 
-		<script type="text/javascript" src="<%=contextPath%>/static/js/common/displaytag.js"></script> 
-		<script type="text/javascript" src="<%=contextPath%>/static/js/hangong/hangongChartNoQuery.js"></script> 
-		<script type="text/javascript" src="<%=contextPath%>/common/lib/My97DatePicker/WdatePicker.js"></script>	 
-	</div></body>
+		</div>
+		<div id="zoneContainer" class="table_main" style="display:none;padding:10px 0px 0px 10px">
+			<input id="recordId" type="hidden" value="" />
+			<table border=0>
+				<col align="left" width="100" />
+				<col align="left" />
+				<tr>
+					<td style="font-size: 12px;height:20px">
+						细化区域：
+					<br /></td>
+					<td>
+						<input class="ipt" type="text" 
+							style="width: 150px; text-align: right" id="zone"
+							value="" size="10" />
+					<br /></td>
+				</tr>
+				<tr>
+					<td style="font-size: 12px;height:20px">
+						责任区：
+					<br /></td>
+					<td>
+						<input class="ipt" type="text"
+							style="width: 150px; text-align: right" id="zoneClass"
+							value="" size="10" />
+					<br /></td>
+				<tr>
+				<tr align="center" style="font-size: 12px;height:20px">
+					<td colspan="2">
+						<input type="button" onclick="saveZone()" value="修改" />
+						<input type="button" onclick="returnToList()" value="返回" />
+					<br /></td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript"
+			src="<%=contextPath%>/static/js/common/common.js"></script>
+		<script type="text/javascript"
+			src="<%=contextPath%>/static/js/common/displaytag.js"></script>
+		<script type="text/javascript" src="<%=contextPath%>/static/js/hangong/hangongChartNoQueryForAdmin.js"></script> 
+	</body>
 </html>

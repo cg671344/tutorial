@@ -22,7 +22,7 @@ function checkall() {
 function query() {
 	var chartNo = $("#chartNo").val();
 	var hankouNo = $("#hankouNo").val();
-	var url = contextPath + "/hangongChartNoQuery.do";
+	var url = contextPath + "/hangongChartNoQueryForAdmin.do";
 	if (chartNo != "" && hankouNo != "") {
 		url = url + "?chartNo=" + chartNo + "&hankouNo=" + hankouNo;
 	}else if(chartNo == "" && hankouNo != "") {
@@ -68,7 +68,7 @@ function saveZone(){
             	common.showLoading(false,null);
                 if(data.status == "SUCCESS"){  
                      alert("修改成功！");
-                     window.location.href = contextPath + "/listRecords.do";
+                     window.location.href = contextPath + "/hangongChartNoQueryForAdmin.do";
                 }
          },
         error:function(data){

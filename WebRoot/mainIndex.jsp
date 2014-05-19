@@ -284,6 +284,7 @@ $(function() {
 				<authz:authorize access="hasRole('supervisor')">
 					<div title="焊接数据管理">
 						<p><a href="javascript:void(0);" src="<%=path%>/listRecords.do" class="cs-navi-tab">源数据查询</a></p>
+						<p><a href="javascript:void(0);" src="<%=path%>/hangongChartNoQueryForAdmin.do" class="cs-navi-tab">源等轴图号与焊口号查询</a></p>
 						<p><a href="javascript:void(0);" src="<%=path%>/file/uploadingFile.do" class="cs-navi-tab">焊接数据文件上传</a></p>
 						<p><a href="javascript:void(0);" src="<%=path%>/file/uploadingHangongFile.do" class="cs-navi-tab">焊工信息文件上传</a></p>
 						<p><a href="javascript:void(0);" src="<%=path%>/setting/alertLimitSetting.do" class="cs-navi-tab">参数设定</a></p>
