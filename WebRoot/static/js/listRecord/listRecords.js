@@ -1,3 +1,4 @@
+
 var contextPath = getContextPath();
 function getContextPath() {
 	var pathName = document.location.pathname;
@@ -6,8 +7,7 @@ function getContextPath() {
 	return result;
 }
 $(document).ready(function () {
-	if (globalQueryStartDate != null && globalQueryStartDate != "null" 
-			&& globalQueryEndDate != null && globalQueryEndDate != "null") {
+	if (globalQueryStartDate != null && globalQueryStartDate != "null" && globalQueryEndDate != null && globalQueryEndDate != "null") {
 		$("#startDate").val(globalQueryStartDate);
 		$("#endDate").val(globalQueryEndDate);
 	}
@@ -36,50 +36,46 @@ function query() {
 	}
 	window.location.href = url;
 }
-
-function editZone(id, zone, zoneClass){
+function editZone(id, zone, zoneClass) {
 	$("#recordId").val(id);
 	$("#zone").val(zone);
 	$("#zoneClass").val(zoneClass);
 	$("#recordContainer").hide();
 	$("#zoneContainer").show();
 }
-
-function returnToList(){
+function returnToList() {
 	$("#zoneContainer").hide();
 	$("#recordContainer").show();
 }
-
-function saveZone(){
+function saveZone() {
 	var zone = $("#zone").val();
 	var zoneClass = $("#zoneClass").val();
 	var recordId = $("#recordId").val();
 	$("#zoneContainer").hide();
 	$("#recordContainer").show();
-	$.ajax({type:"post", 
-		url : contextPath + "/editRecord.do", 
-		data:{
-			recordId :recordId,
-			zone:zone,
-			zoneClass:zoneClass
-		},
-		beforeSend : function(XHR){
-			common.showLoading(true,null);
-			return true;
-		},
-		dataType:"json", 
-		success:function (data){  
-            	common.showLoading(false,null);
-                if(data.status == "SUCCESS"){  
-                     alert("修改成功！");
-                     window.location.href = contextPath + "/listRecords.do";
-                }
-         },
-        error:function(data){
-           	common.showLoading(false,null);
-            alert("服务异常");  
-        }  
-	});
+	$.ajax({type:"post", url:contextPath + "/editRecord.do", data:{recordId:recordId, zone:zone, zoneClass:zoneClass}, beforeSend:function (XHR) {
+		common.showLoading(true, null);
+		return true;
+	}, dataType:"json", success:function (data) {
+		common.showLoading(false, null);
+		if (data.status == "SUCCESS") {
+			alert("\u4fee\u6539\u6210\u529f\uff01");
+			if ($("#recordContainer select").get(0)) {
+				//需要把参数带过去，重新定位到当前页码
+				var startDate = $("#startDate").val();
+				var endDate = $("#endDate").val();
+				url = $("#recordContainer select").get(0).value;//获取带页码的url地址
+				if (startDate != "" && endDate != "") {
+					url = url + "&startDate=" + startDate + "&endDate=" + endDate;
+				}
+				window.location.href = url;
+			}else{
+				query();
+			}
+		}
+	}, error:function (data) {
+		common.showLoading(false, null);
+		alert("\u670d\u52a1\u5f02\u5e38");
+	}});
 }
-
 

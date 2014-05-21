@@ -7,6 +7,9 @@
 <%
 	String startDate = request.getParameter("startDate");
 	String endDate = request.getParameter("endDate");
+	
+	
+	
 %>
 <html>
 	<head>

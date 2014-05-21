@@ -58,6 +58,7 @@ public class RecordController {
 		rs.put("results", pageModel.getList());
 		rs.put("total",pageModel.getTotalRecords());
 		rs.put("pagesize",PAGE_SIZE);
+		rs.put("pageIndex",pageIndex);
 		request.setAttribute("rs", rs);
         return "listRecords";
     }

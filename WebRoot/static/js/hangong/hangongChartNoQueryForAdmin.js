@@ -67,8 +67,23 @@ function saveZone(){
 		success:function (data){  
             	common.showLoading(false,null);
                 if(data.status == "SUCCESS"){  
-                     alert("修改成功！");
-                     window.location.href = contextPath + "/hangongChartNoQueryForAdmin.do";
+                    alert("修改成功！");
+                    //有分页的显示则把页码带过去，否则不带页码
+                    if ($("#recordContainer select").get(0)) {
+						var chartNo = $("#chartNo").val();
+						var hankouNo = $("#hankouNo").val();
+						url = $("#recordContainer select").get(0).value;//获取带页码的url地址
+						if (chartNo != "" && hankouNo != "") {
+							url = url + "&chartNo=" + chartNo + "&hankouNo=" + hankouNo;
+						}else if(chartNo == "" && hankouNo != "") {
+							url = url + "&hankouNo=" + hankouNo;
+						}else if(chartNo != "" && hankouNo == "") {
+							url = url + "&chartNo=" + chartNo;
+						}
+						window.location.href = url;
+					}else{
+						query();
+					}
                 }
          },
         error:function(data){
