@@ -48,21 +48,24 @@ function generateResUsedAnalysticXml(weekJson, weekSumJson) {
 		categories = categories + '<category name="'+ weekJson[i].weekSeq + '"/>';
 		var num = new Number(weekJson[i].qulifiedRate*100);
 		var dipianNumber = new Number(weekJson[i].dipianNumber);
-		if(dipianNumber != 0){
-			data = data +'<set value="'
+		var weekSeq = new Number(weekJson[i].weekSeq);
+			if(weekSeq <= currentWeek){
+						data = data +'<set value="'
 				+ num.toFixed(2)
 				+'" />';
-		}
+			}
 	}
 	var data2 = "";
+	var weekSumIndex = 1;
 	for (var i in weekSumJson) {
 		var num = new Number(weekSumJson[i].qulifiedRate*100);
 		var dipianNumber = new Number(weekJson[i].dipianNumber);
-		if(dipianNumber != 0){
+		if(weekSumIndex <= currentWeek){
 			data2 = data2 +'<set value="'
 				+ num.toFixed(2)
 				+'" />';
 		}
+		weekSumIndex = weekSumIndex+1;
 	}
 	var xml = '<graph caption="'
 			+ year + '年'

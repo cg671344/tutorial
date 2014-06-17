@@ -141,6 +141,7 @@ public class RateTrendAnalystic {
 		model.addAttribute("weekSumDataList", weekSumDataList);//星期的累计数据
     	model.addAttribute("weekAlertLimit", setting.getValue());//设定的警戒值
     	model.addAttribute("year",year);//数据所属年份
+    	model.addAttribute("currentWeek", currentWeek == 0 ? weekSeq : currentWeek);
     	//计算当前时间是否需要警报,在alertWeekNumber星期内出现低于警戒值的数据，响起警报
     	model.addAttribute("alert",
 				currentWeek - latestAlertWeek <= alertWeekNumber

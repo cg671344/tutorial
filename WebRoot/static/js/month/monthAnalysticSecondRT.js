@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 function query(){
 	var selectValue = $("#yearSelect").val();
-	window.location.href = path+ "/weekAnalysticSecondRT.do?year=" + selectValue;
+	window.location.href = path+ "/monthAnalysticSecondRT.do?year=" + selectValue;
 }
 function _fusionChartsDraw(chartType, xml, width, height, widgetId, chartSuffix, webPath) {
 	var myChart = new FusionCharts(webPath + "/common/lib/fusionChartsFree/Charts/" + chartType + ".swf", widgetId + chartSuffix, width, height, "0", "1");

@@ -82,7 +82,13 @@ public class DisplayAnalystic {
     @RequestMapping("/zoneClassAnalysticSecondRT.do")
     public String zoneClassSecondRT(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
 		List<MsColumnData> list = recordManager.getResponsibilityZoneData(startDate, endDate, HankouSequence.SECOND);
 		model.addAttribute("displayDataList", list);
         return "/zoneClass/zoneClassAnalysticSecondRT";
@@ -91,7 +97,14 @@ public class DisplayAnalystic {
     @RequestMapping("/zoneClassAnalysticTableSecondRT.do")
     public String zoneClassAnalysticTableSecondRT(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
+    	
 		List<MsColumnData> list = recordManager.getResponsibilityZoneData(StringUtils.remove(
 				startDate, '-'), StringUtils.remove(endDate, '-'), HankouSequence.SECOND);
 		model.addAttribute("displayDataList", list);
@@ -102,7 +115,13 @@ public class DisplayAnalystic {
 	@RequestMapping(value = "/getZoneClassAnalysticJsonDataSecondRT.do")
 	public String getMsColumnDataSecondRT(HttpServletRequest request) {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
 		List<MsColumnData> list = recordManager.getResponsibilityZoneData(StringUtils.remove(
 				startDate, '-'), StringUtils.remove(endDate, '-'), HankouSequence.SECOND);
 		JSONArray jsonData = JSONArray.fromObject(list);  
@@ -121,7 +140,14 @@ public class DisplayAnalystic {
     @RequestMapping("/getZoneAnalysticJsonData.do")
     public String getZoneAnalysticJsonData(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
+    	
     	List<MsColumnData> list = null;
 		if(startDate != null && endDate != null){
 			list = recordManager.getZoneAnalysticData(StringUtils.remove(
@@ -137,7 +163,13 @@ public class DisplayAnalystic {
     @RequestMapping("/zoneAnalysticTable.do")
     public String zoneAnalysticTable(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
     	List<MsColumnData> list = null;
 		if(startDate != null && endDate != null){
 			list = recordManager.getZoneAnalysticData(StringUtils.remove(
@@ -162,7 +194,13 @@ public class DisplayAnalystic {
     @RequestMapping("/getZoneAnalysticJsonDataSecondRT.do")
     public String getZoneAnalysticJsonDataSecondRT(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
     	List<MsColumnData> list = null;
 		if(startDate != null && endDate != null){
 			list = recordManager.getZoneAnalysticData(StringUtils.remove(
@@ -178,7 +216,13 @@ public class DisplayAnalystic {
     @RequestMapping("/zoneAnalysticTableSecondRT.do")
     public String zoneAnalysticTableSecondRT(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
     	List<MsColumnData> list = null;
 		if(startDate != null && endDate != null){
 			list = recordManager.getZoneAnalysticData(StringUtils.remove(
@@ -194,6 +238,12 @@ public class DisplayAnalystic {
     public String hangongAnalystic(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
     	String endDate = request.getParameter("endDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
     	String hangongNo = request.getParameter("hangongNo");
     	String hangongName = request.getParameter("hangongName");
     	if(hangongName!=null)
@@ -212,7 +262,13 @@ public class DisplayAnalystic {
     @RequestMapping("/hankouTable.do")
     public String hangkouTable(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
     	String hangongNo = request.getParameter("hangongNo");
     	int pageIndex;
 		String PARAMETER_PAGE = (new ParamEncoder("element").
@@ -247,7 +303,14 @@ public class DisplayAnalystic {
     @RequestMapping("/hangongAnalysticSecondRT.do")
     public String hangongAnalysticSecondRT(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
     	String endDate = request.getParameter("endDate");
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
+    	
     	String hangongNo = request.getParameter("hangongNo");
     	String hangongName = request.getParameter("hangongName");
     	if(hangongName!=null)
@@ -267,6 +330,12 @@ public class DisplayAnalystic {
     public String hangkouTableSecondRT(HttpServletRequest request, ModelMap model) throws Exception {
     	String startDate = request.getParameter("startDate");
     	String endDate = request.getParameter("endDate");
+    	if("".equals(startDate)){
+    		startDate = null;
+    	}
+    	if("".equals(endDate)){
+    		endDate = null;
+    	}
     	String hangongNo = request.getParameter("hangongNo");
     	int pageIndex;
 		String PARAMETER_PAGE = (new ParamEncoder("element").

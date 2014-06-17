@@ -7,7 +7,7 @@
     <debug />
     <global-method-security pre-post-annotations="enabled" />
     <http pattern="/" security="none"/>
-    <http pattern="/static/**" security="none"/>
+    <http pattern="/static/**/*" security="none"/>
     <http pattern="/login.jsp" security="none"/>
     <http pattern="/register.jsp" security="none"/>
     <http pattern="/loggedout.jsp" security="none"/>

@@ -169,7 +169,7 @@ public class RecordDao{
 	public List<MsColumnData> getZoneAnalysticData(String startDate, String endDate, HankouSequence seq){
 		String hqlString = null;
 		Query query = null;
-		if(startDate ==null || endDate == null){
+		if(startDate ==null || endDate == null || startDate.equals("null") || endDate.equals("null")){
 			hqlString = "select r.zone, sum(pianziNumber), sum(fanxiuNumber) from Record r where r.hankouSequence = :hankouSequence group by r.zone order by zone";
 			query = getSession().createQuery(hqlString);
 			query.setParameter("hankouSequence",seq);

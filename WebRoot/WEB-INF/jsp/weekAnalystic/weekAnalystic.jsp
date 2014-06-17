@@ -17,6 +17,7 @@
 	String weekAlertLimit = (String)request.getAttribute("weekAlertLimit");
 	Boolean alert = (Boolean)request.getAttribute("alert");
 	Integer year = (Integer)request.getAttribute("year");
+	Integer currentWeek = (Integer)request.getAttribute("currentWeek");
 %>
 <html>
 	<head>
@@ -33,6 +34,7 @@
 			var weekAlertLimit = '<%=weekAlertLimit%>';
 			var toAlert = '<%=alert%>';
 			var year = '<%=year%>';
+			var currentWeek = '<%=currentWeek%>';
 		</script>
 		<title>资产统计页面</title>
 	</head>

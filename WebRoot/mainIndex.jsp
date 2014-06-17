@@ -33,17 +33,21 @@ a:active {
  text-decoration: none;
 }
 .cs-north {
-	height:60px;background:#B3DFDA;
+	/**background:#B3DFDA;**/
+	height:95px;
+	background:#219CEF;
 }
 .cs-north-bg {
 	width: 100%;
 	height: 100%;
-	background: url("<%=path%>/static/css/themes/gray/images/header_bg.png") repeat-x;
+	/**background: url("<%=path%>/static/css/themes/images/header_bg.png") repeat-x;**/
+	/**background: url("<%=path%>/css/images/hongyanhe.gif");**/
 }
 .cs-north-logo {
-	height: 40px;
-	padding: 15px 0px 0px 5px;
-	color:#fff;font-size:22px;font-weight:bold;text-decoration:none
+	background:url('<%=path%>/static/css/themes/gray/images/hongyanhe.png') no-repeat right top;
+	height: 90px;
+	width:100%;
+	color:white;font-weight:bold;text-decoration:none
 }
 .cs-west {
 	width:200px;padding:0px;border-left:1px solid #99BBE8;
@@ -241,18 +245,21 @@ $(function() {
 		</div>
 		<div region="north" border="true" class="cs-north">
 		<div class="cs-north-bg">
-			<div class="cs-north-logo" style="float:left">
-				焊接合格率自动预警系统
-			</div>
-			<div style="float:right;padding-top:25px;padding-right:30px">
+			<div class="cs-north-logo">
+				<div style="float:left; padding:15px 0px 0px 5px">
+					<div style="font-size:18px;padding:15px 0px 0px 5px">焊接合格率自动预警系统</div>
+					<div style="font-size:14px;padding:15px 0px 0px 100px">一次把事情做好</div>
+				</div>
+				<div style="float:right;font-size:14px;padding:40px 5px 0px 5px">
 					<authz:authorize access="isAuthenticated()">
 						登录人：
 						<authz:authentication property="principal.username" />
 						<a class="btn btn-primary btn-large" href="<%=path%>/j_spring_security_logout">退出</a>
 					</authz:authorize>
 					<authz:authorize access="!isAuthenticated()">
-						<a class="btn btn-primary btn-large theme-login" href="javascript:;">登录</a>
+						<a class="btn btn-primary btn-large theme-login" href="javascript:;">管理员登录</a>
 					</authz:authorize>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -283,8 +290,8 @@ $(function() {
 				</div>
 				<authz:authorize access="hasRole('supervisor')">
 					<div title="焊接数据管理">
-						<p><a href="javascript:void(0);" src="<%=path%>/listRecords.do" class="cs-navi-tab">源数据查询</a></p>
-						<p><a href="javascript:void(0);" src="<%=path%>/hangongChartNoQueryForAdmin.do" class="cs-navi-tab">源等轴图号与焊口号查询</a></p>
+						<p><a href="javascript:void(0);" src="<%=path%>/listRecords.do" class="cs-navi-tab">源数据时间段查询</a></p>
+						<p><a href="javascript:void(0);" src="<%=path%>/hangongChartNoQueryForAdmin.do" class="cs-navi-tab">源数据等轴图号查询</a></p>
 						<p><a href="javascript:void(0);" src="<%=path%>/file/uploadingFile.do" class="cs-navi-tab">焊接数据文件上传</a></p>
 						<p><a href="javascript:void(0);" src="<%=path%>/file/uploadingHangongFile.do" class="cs-navi-tab">焊工信息文件上传</a></p>
 						<p><a href="javascript:void(0);" src="<%=path%>/setting/alertLimitSetting.do" class="cs-navi-tab">参数设定</a></p>

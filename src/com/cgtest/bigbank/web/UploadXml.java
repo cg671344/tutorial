@@ -349,7 +349,11 @@ public class UploadXml {
 								}
 								break;
 							case 8:
-								record.setJianyanResult(value);
+								if("NI".equalsIgnoreCase(value)){
+									record.setJianyanResult("Y");
+								}else{
+									record.setJianyanResult(value);	
+								}
 								break;	
 							case 9:
 								record.setGuige1(value);
