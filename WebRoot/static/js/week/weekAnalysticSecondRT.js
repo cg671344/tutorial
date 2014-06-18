@@ -44,23 +44,28 @@ function generateResUsedAnalysticXml(weekJson, weekSumJson) {
 	var hoverText = [];
 	var categories ="";
 	var data = "";
-	for (var i in weekJson) {
-		categories = categories + '<category name="'+ weekJson[i].weekSeq + '"/>';
+	var displayEndWeekSeq = -1;//
+	for (var i= weekJson.length-1 ; i>=0; i--) {
+		categories = '<category name="'+ weekJson[i].weekSeq + '"/>' +  categories;
 		var num = new Number(weekJson[i].qulifiedRate*100);
 		var dipianNumber = new Number(weekJson[i].dipianNumber);
 		var weekSeq = new Number(weekJson[i].weekSeq);
-			if(weekSeq <= currentWeek){
-						data = data +'<set value="'
+		if(dipianNumber !=0 && displayEndWeekSeq == -1){
+			displayEndWeekSeq = i;
+		}
+		if(weekSeq <= currentWeek && i <= displayEndWeekSeq){
+						data = '<set value="'
 				+ num.toFixed(2)
-				+'" />';
+				+'" />' + data;
 			}
 	}
+	
 	var data2 = "";
 	var weekSumIndex = 1;
 	for (var i in weekSumJson) {
 		var num = new Number(weekSumJson[i].qulifiedRate*100);
 		var dipianNumber = new Number(weekJson[i].dipianNumber);
-		if(weekSumIndex <= currentWeek){
+		if(weekSumIndex <= currentWeek && i<= displayEndWeekSeq){
 			data2 = data2 +'<set value="'
 				+ num.toFixed(2)
 				+'" />';

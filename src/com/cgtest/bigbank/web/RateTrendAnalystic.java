@@ -26,7 +26,7 @@ import com.cgtest.registration.service.SettingManager;
 import com.cgtest.utils.CalendarUtils;
 
 /**
- * Äê¶ÈĞÇÆÚ¡¢ÔÂ·İÀÛ¼ÆºÏ¸ñÂÊÇ÷ÊÆÍ¼
+ * å¹´åº¦æ˜ŸæœŸã€æœˆä»½ç´¯è®¡åˆæ ¼ç‡è¶‹åŠ¿å›¾
  * @author chairy
  *
  */
@@ -42,7 +42,7 @@ public class RateTrendAnalystic {
     private SettingManager settingManager;
 	
 	/**
-	 * Éú³ÉĞÇÆÚÒ»´ÎºÏ¸ñÂÊÇ÷ÊÆÏà¹ØÊı¾İ
+	 * ç”Ÿæˆæ˜ŸæœŸä¸€æ¬¡åˆæ ¼ç‡è¶‹åŠ¿ç›¸å…³æ•°æ®
 	 * @param request
 	 * @param model
 	 * @return
@@ -72,7 +72,7 @@ public class RateTrendAnalystic {
     	Calendar cal = Calendar.getInstance();
     	Date now = new Date();
     	if(yearString == null){
-    		//Èç¹ûÇ°Ì¨Ò³ÃæÎ´´«²ÎÊıyear£¬ÔòÈÏÎªÊÇµ±Ç°Äê·İ
+    		//å¦‚æœå‰å°é¡µé¢æœªä¼ å‚æ•°yearï¼Œåˆ™è®¤ä¸ºæ˜¯å½“å‰å¹´ä»½
     		year =  cal.get(Calendar.YEAR);
     		cal.set(Calendar.MONTH, 0);
     		cal.set(Calendar.DAY_OF_YEAR, 1);
@@ -91,17 +91,17 @@ public class RateTrendAnalystic {
 	    Setting setting = settingManager.getUserByUsername(type);
 	    int alertWeekNumber =  Integer.valueOf(settingManager.getUserByUsername(SettingType.AlertWeekNumber).getValue());
 		
-	    long pipianNumberSum = 0;//Æ¬×Ó×ÜÊı
-		long fanxiuNumberSum = 0;//·µĞŞ×ÜÊı
+	    long pipianNumberSum = 0;//ç‰‡å­æ€»æ•°
+		long fanxiuNumberSum = 0;//è¿”ä¿®æ€»æ•°
 	    
 	    do{
-	    	Date weekStartDate = CalendarUtils.getFirstDayOfWeek(cal.getTime());//±¾ÖÜµÚÒ»Ìì
-	    	cal.setTime(weekStartDate);//calendarĞŞÕı³É±¾ÖÜµÚÒ»Ìì
+	    	Date weekStartDate = CalendarUtils.getFirstDayOfWeek(cal.getTime());//æœ¬å‘¨ç¬¬ä¸€å¤©
+	    	cal.setTime(weekStartDate);//calendarä¿®æ­£æˆæœ¬å‘¨ç¬¬ä¸€å¤©
 	    	String weekStartDateString = dateformat.format(weekStartDate);
-	    	cal.add(Calendar.DAY_OF_MONTH, 6);//±¾ÖÜ×îºóÒ»Ìì
+	    	cal.add(Calendar.DAY_OF_MONTH, 6);//æœ¬å‘¨æœ€åä¸€å¤©
 	    	Date weekEndDate = cal.getTime();
 	    	String weekEndDateString = dateformat.format(weekEndDate);
-	    	cal.add(Calendar.DAY_OF_MONTH, 1);//ÏÂÖÜµÚÒ»Ìì
+	    	cal.add(Calendar.DAY_OF_MONTH, 1);//ä¸‹å‘¨ç¬¬ä¸€å¤©
 	    	WeekData data;
 	    	WeekCumulativeData weekDataSum = new WeekCumulativeData();
 	    	if(nowString.compareTo(weekStartDateString) >= 0){
@@ -137,19 +137,19 @@ public class RateTrendAnalystic {
 	    	nextweekDate.add(Calendar.DAY_OF_MONTH, 6);
 	    	weekSeq ++;
 	    }while(nextweekDate.get(Calendar.YEAR) == year);
-		model.addAttribute("weekDataList", list);//ĞÇÆÚµÄÇ÷ÊÆÊı¾İ
-		model.addAttribute("weekSumDataList", weekSumDataList);//ĞÇÆÚµÄÀÛ¼ÆÊı¾İ
-    	model.addAttribute("weekAlertLimit", setting.getValue());//Éè¶¨µÄ¾¯½äÖµ
-    	model.addAttribute("year",year);//Êı¾İËùÊôÄê·İ
+		model.addAttribute("weekDataList", list);//æ˜ŸæœŸçš„è¶‹åŠ¿æ•°æ®
+		model.addAttribute("weekSumDataList", weekSumDataList);//æ˜ŸæœŸçš„ç´¯è®¡æ•°æ®
+    	model.addAttribute("weekAlertLimit", setting.getValue());//è®¾å®šçš„è­¦æˆ’å€¼
+    	model.addAttribute("year",year);//æ•°æ®æ‰€å±å¹´ä»½
     	model.addAttribute("currentWeek", currentWeek == 0 ? weekSeq : currentWeek);
-    	//¼ÆËãµ±Ç°Ê±¼äÊÇ·ñĞèÒª¾¯±¨,ÔÚalertWeekNumberĞÇÆÚÄÚ³öÏÖµÍÓÚ¾¯½äÖµµÄÊı¾İ£¬ÏìÆğ¾¯±¨
-    	model.addAttribute("alert",
-				currentWeek - latestAlertWeek <= alertWeekNumber
-						&& latestAlertWeek != 0 ? true : false);
+    	//è®¡ç®—å½“å‰æ—¶é—´æ˜¯å¦éœ€è¦è­¦æŠ¥,åœ¨alertWeekNumberæ˜ŸæœŸå†…å‡ºç°ä½äºè­¦æˆ’å€¼çš„æ•°æ®ï¼Œå“èµ·è­¦æŠ¥
+    	model.addAttribute("alert", currentWeek - latestAlertWeek >= 0
+				&& currentWeek - latestAlertWeek <= alertWeekNumber
+				&& latestAlertWeek != 0 ? true : false);
 	}
 	
 	/**
-	 * Éú³ÉÔÂ·İÒ»´ÎºÏ¸ñÂÊÇ÷ÊÆÍ¼Êı¾İ
+	 * ç”Ÿæˆæœˆä»½ä¸€æ¬¡åˆæ ¼ç‡è¶‹åŠ¿å›¾æ•°æ®
 	 * @param request
 	 * @param model
 	 * @return
@@ -165,7 +165,7 @@ public class RateTrendAnalystic {
 	
 	
 	/**
-	 * Éú³ÉÔÂ·İÇ÷ÊÆÍ¼µÄ¶ş´ÎºÏ¸ñÂÊÊı¾İ
+	 * ç”Ÿæˆæœˆä»½è¶‹åŠ¿å›¾çš„äºŒæ¬¡åˆæ ¼ç‡æ•°æ®
 	 * @param request
 	 * @param model
 	 * @return
@@ -204,13 +204,13 @@ public class RateTrendAnalystic {
 	    int alertWeekNumber =  Integer.valueOf(settingManager.getUserByUsername(SettingType.AlertWeekNumber).getValue());
 		
 	    do{
-	    	Date weekStartDate = CalendarUtils.getFirstDayOfWeek(cal.getTime());//±¾ÖÜµÚÒ»Ìì
-	    	cal.setTime(weekStartDate);//calendarĞŞÕı³É±¾ÖÜµÚÒ»Ìì
+	    	Date weekStartDate = CalendarUtils.getFirstDayOfWeek(cal.getTime());//æœ¬å‘¨ç¬¬ä¸€å¤©
+	    	cal.setTime(weekStartDate);//calendarä¿®æ­£æˆæœ¬å‘¨ç¬¬ä¸€å¤©
 	    	String weekStartDateString = dateformat.format(weekStartDate);
-	    	cal.add(Calendar.DAY_OF_MONTH, 6);//±¾ÖÜ×îºóÒ»Ìì
+	    	cal.add(Calendar.DAY_OF_MONTH, 6);//æœ¬å‘¨æœ€åä¸€å¤©
 	    	Date weekEndDate = cal.getTime();
 	    	String weekEndDateString = dateformat.format(weekEndDate);
-	    	cal.add(Calendar.DAY_OF_MONTH, 1);//ÏÂÖÜµÚÒ»Ìì
+	    	cal.add(Calendar.DAY_OF_MONTH, 1);//ä¸‹å‘¨ç¬¬ä¸€å¤©
 	    	WeekData data;
 	    	WeekCumulativeData weekDataSum = new WeekCumulativeData();
 	    	if(nowString.compareTo(weekStartDateString) >= 0){
@@ -236,7 +236,7 @@ public class RateTrendAnalystic {
 	    	weekSeq ++;
 	    }while(nextweekDate.get(Calendar.YEAR) == year);
 	    
-	    //¼ÆËã12¸öÔÂ·İµÄÔÂÊı¾İ
+	    //è®¡ç®—12ä¸ªæœˆä»½çš„æœˆæ•°æ®
 	    int monthSeq = 1;
 	    List<MonthData> monthDataList = new ArrayList<MonthData>();
 	    MonthData loopData = new MonthData();
@@ -263,12 +263,12 @@ public class RateTrendAnalystic {
 	    }
 		monthDataList.add(loopData);
 		
-		//¼ÆËã12¸öÔÂ·İµÄÀÛ»ıÊı¾İ
+		//è®¡ç®—12ä¸ªæœˆä»½çš„ç´¯ç§¯æ•°æ®
 		List<MonthCumulativeData> monthSumDataList = new ArrayList<MonthCumulativeData>();
-	    long pipianNumberSum = 0;//Æ¬×Ó×ÜÊı
-		long fanxiuNumberSum = 0;//·µĞŞ×ÜÊı
+	    long pipianNumberSum = 0;//ç‰‡å­æ€»æ•°
+		long fanxiuNumberSum = 0;//è¿”ä¿®æ€»æ•°
 		for(MonthData monthData : monthDataList){
-			//±£Ö¤³ıÊı²»Îª0£¬·ñÔò»á³öÏÖÎŞÇî´óµÄÊıÖµ
+			//ä¿è¯é™¤æ•°ä¸ä¸º0ï¼Œå¦åˆ™ä¼šå‡ºç°æ— ç©·å¤§çš„æ•°å€¼
 			if(monthData.getDipianNumber() != 0){
 				monthData.setQulifiedRate((monthData.getDipianNumber() - monthData
 						.getFanxiuNumber())
@@ -281,7 +281,7 @@ public class RateTrendAnalystic {
 			MonthCumulativeData dataSum = new MonthCumulativeData();
 			dataSum.setDipianNumber(pipianNumberSum);
 			dataSum.setFanxiuNumber(fanxiuNumberSum);
-			//±£Ö¤³ıÊı²»Îª0£¬·ñÔò»á³öÏÖÎŞÇî´óµÄÊıÖµ
+			//ä¿è¯é™¤æ•°ä¸ä¸º0ï¼Œå¦åˆ™ä¼šå‡ºç°æ— ç©·å¤§çš„æ•°å€¼
 			if(dataSum.getDipianNumber()!=0){
 				dataSum.setQulifiedRate((dataSum.getDipianNumber() - dataSum
 						.getFanxiuNumber())
@@ -295,6 +295,8 @@ public class RateTrendAnalystic {
 		model.addAttribute("monthSumDataList", monthSumDataList);
     	model.addAttribute("weekAlertLimit", setting.getValue());
     	model.addAttribute("year",year);
-    	model.addAttribute("alert",currentWeek - latestAlertWeek <= alertWeekNumber && latestAlertWeek !=0 ? true : false);
+    	model.addAttribute("alert", currentWeek - latestAlertWeek >= 0
+				&& currentWeek - latestAlertWeek <= alertWeekNumber
+				&& latestAlertWeek != 0 ? true : false);
 	}
 }
